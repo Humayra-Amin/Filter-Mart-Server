@@ -1,4 +1,4 @@
-## FilterMart Backend
+## FilterMart
 
 This is the backend repository for FilterMart, a single-page e-commerce website built with Node.js, Express.js, and MongoDB. The backend provides APIs for fetching products, user authentication, and other functionalities.
 
