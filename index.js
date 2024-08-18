@@ -43,34 +43,34 @@ async function run() {
       const sort = req.query.sort || '';
 
       
-    //   let filter = {};
-    //   if (brand) {
-    //     filter.brand = brand;
-    //   }
-    //   if (category) {
-    //     filter.category = category;
-    //   }
-    //   if (priceRange) {
-    //     const [minPrice, maxPrice] = priceRange.split('-').map(Number);
-    //     filter.price = { $gte: minPrice, $lte: maxPrice };
-    //   }
+      let filter = {};
+      if (brand) {
+        filter.brand = brand;
+      }
+      if (category) {
+        filter.category = category;
+      }
+      if (priceRange) {
+        const [minPrice, maxPrice] = priceRange.split('-').map(Number);
+        filter.price = { $gte: minPrice, $lte: maxPrice };
+      }
      
-    //   if (search) {
-    //     filter.name = { $regex: new RegExp(search, 'i') };
-    //   }
-    //   // Sorting
-    //   let sortOptions = {};
-    //   if (sort === 'price-asc') {
-    //     sortOptions.price = 1;
-    //   } else if (sort === 'price-desc') {
-    //     sortOptions.price = -1;
-    //   } else if (sort === 'date-desc') {
-    //     sortOptions.dateAdded = -1;
-    //   }
+      // if (search) {
+      //   filter.name = { $regex: new RegExp(search, 'i') };
+      // }
+      // // Sorting
+      // let sortOptions = {};
+      // if (sort === 'price-asc') {
+      //   sortOptions.price = 1;
+      // } else if (sort === 'price-desc') {
+      //   sortOptions.price = -1;
+      // } else if (sort === 'date-desc') {
+      //   sortOptions.dateAdded = -1;
+      // }
 
-    //   const result = await productCollection.find(filter).sort(sortOptions).skip(page * size).limit(size).toArray();
-    //   res.send(result);
-    // });
+      const result = await productCollection.find(filter).sort(sortOptions).skip(page * size).limit(size).toArray();
+      res.send(result);
+    });
 
   
     // app.get('/productsCount', async (req, res) => {
@@ -94,9 +94,9 @@ async function run() {
     //   if (search) {
     //     filter.name = { $regex: new RegExp(search, 'i') };
     //   }
-      const count = await productCollection.countDocuments(filter);
-      res.send({ count });
-    });
+    //   const count = await productCollection.countDocuments(filter);
+    //   res.send({ count });
+    // });
 
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
