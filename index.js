@@ -55,18 +55,18 @@ async function run() {
         filter.price = { $gte: minPrice, $lte: maxPrice };
       }
      
-      // if (search) {
-      //   filter.name = { $regex: new RegExp(search, 'i') };
-      // }
-      // // Sorting
-      // let sortOptions = {};
-      // if (sort === 'price-asc') {
-      //   sortOptions.price = 1;
-      // } else if (sort === 'price-desc') {
-      //   sortOptions.price = -1;
-      // } else if (sort === 'date-desc') {
-      //   sortOptions.dateAdded = -1;
-      // }
+      if (search) {
+        filter.name = { $regex: new RegExp(search, 'i') };
+      }
+      // Sorting
+      let sortOptions = {};
+      if (sort === 'price-asc') {
+        sortOptions.price = 1;
+      } else if (sort === 'price-desc') {
+        sortOptions.price = -1;
+      } else if (sort === 'date-desc') {
+        sortOptions.dateAdded = -1;
+      }
 
       const result = await productCollection.find(filter).sort(sortOptions).skip(page * size).limit(size).toArray();
       res.send(result);
