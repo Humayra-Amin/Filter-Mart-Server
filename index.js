@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5000", "https://filter-mart.web.app/"],
+  origin: ["http://localhost:5173", "http://localhost:5000", "https://filter-mart.web.app"],
 }));
 app.use(express.json());
 
@@ -79,7 +79,7 @@ async function run() {
       const priceRange = req.query.priceRange;
       const search = req.query.search || '';
 
-      // Filter
+      // Categorization
       let filter = {};
       if (brand) {
         filter.brand = brand;
