@@ -73,30 +73,30 @@ async function run() {
     });
 
   
-    // app.get('/productsCount', async (req, res) => {
-    //   const brand = req.query.brand;
-    //   const category = req.query.category;
-    //   const priceRange = req.query.priceRange;
-    //   const search = req.query.search || '';
+    app.get('/productsCount', async (req, res) => {
+      const brand = req.query.brand;
+      const category = req.query.category;
+      const priceRange = req.query.priceRange;
+      const search = req.query.search || '';
 
-    //   // Filter
-    //   let filter = {};
-    //   if (brand) {
-    //     filter.brand = brand;
-    //   }
-    //   if (category) {
-    //     filter.category = category;
-    //   }
-    //   if (priceRange) {
-    //     const [minPrice, maxPrice] = priceRange.split('-').map(Number);
-    //     filter.price = { $gte: minPrice, $lte: maxPrice };
-    //   }
-    //   if (search) {
-    //     filter.name = { $regex: new RegExp(search, 'i') };
-    //   }
-    //   const count = await productCollection.countDocuments(filter);
-    //   res.send({ count });
-    // });
+      // Filter
+      let filter = {};
+      if (brand) {
+        filter.brand = brand;
+      }
+      if (category) {
+        filter.category = category;
+      }
+      if (priceRange) {
+        const [minPrice, maxPrice] = priceRange.split('-').map(Number);
+        filter.price = { $gte: minPrice, $lte: maxPrice };
+      }
+      if (search) {
+        filter.name = { $regex: new RegExp(search, 'i') };
+      }
+      const count = await productCollection.countDocuments(filter);
+      res.send({ count });
+    });
 
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
